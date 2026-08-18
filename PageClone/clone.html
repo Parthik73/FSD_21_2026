@@ -1,0 +1,1336 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ABES Engineering College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Merriweather:wght@700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #f5f2ec;
+        --paper: #ffffff;
+        --ink: #111111;
+        --muted: #5f646a;
+        --gold: #b88a43;
+        --green: #1f5b4e;
+        --green-2: #18453c;
+        --line: rgba(17, 17, 17, 0.1);
+        --shadow: 0 22px 55px rgba(0, 0, 0, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(31, 91, 78, 0.08),
+            transparent 35%
+          ),
+          linear-gradient(180deg, #fffdf8 0%, var(--bg) 100%);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        overflow: hidden;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(16px);
+        background: rgba(12, 18, 16, 0.88);
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .topbar-inner {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 16px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+        background: #fff;
+        border-radius: 16px;
+        padding: 6px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      }
+
+      .brand-copy {
+        min-width: 0;
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .brand-copy span {
+        display: block;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.84rem;
+        margin-top: 2px;
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 16px 20px;
+        font-size: 0.93rem;
+        color: rgba(255, 255, 255, 0.86);
+      }
+
+      .nav a:hover {
+        color: #fff;
+      }
+
+      .hero {
+        min-height: 88vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        background:
+          linear-gradient(180deg, rgba(7, 10, 8, 0.34), rgba(7, 10, 8, 0.66)),
+          url("About_ABES.webp") center/cover no-repeat;
+        color: #fff;
+        isolation: isolate;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(3, 8, 6, 0.2),
+          rgba(3, 8, 6, 0.7)
+        );
+        z-index: -1;
+      }
+
+      .hero-inner {
+        width: min(1100px, calc(100% - 40px));
+        text-align: center;
+        padding: 120px 0 150px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 10px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.78rem;
+        margin-bottom: 18px;
+      }
+
+      .hero h1 {
+        margin: 0;
+        font-family: Merriweather, Georgia, serif;
+        font-size: clamp(2.5rem, 5vw, 5.25rem);
+        line-height: 1.06;
+        text-wrap: balance;
+        text-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+      }
+
+      .hero p {
+        margin: 24px auto 0;
+        max-width: 900px;
+        font-size: clamp(1.05rem, 2vw, 1.35rem);
+        line-height: 1.85;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .quote-strip {
+        background: #101411;
+        color: #f4f1ea;
+        padding: 18px 24px;
+        text-align: center;
+        font-size: 0.98rem;
+        letter-spacing: 0.02em;
+      }
+
+      .section {
+        width: min(1240px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 84px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 34px;
+      }
+
+      .section-title h2 {
+        margin: 0;
+        font-family: Merriweather, Georgia, serif;
+        font-size: clamp(2rem, 3.4vw, 3.2rem);
+        line-height: 1.12;
+      }
+
+      .section-title .rule {
+        width: 96px;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+        margin: 18px auto 0;
+        border-radius: 999px;
+      }
+
+      .section-title p {
+        max-width: 920px;
+        margin: 16px auto 0;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.03rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat {
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        padding: 24px 18px;
+        box-shadow: var(--shadow);
+        min-height: 128px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .stat .value {
+        font-size: clamp(1.35rem, 2vw, 2rem);
+        font-weight: 800;
+        color: var(--green-2);
+        line-height: 1.1;
+      }
+
+      .stat .label {
+        margin-top: 8px;
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 0.95rem;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 34px;
+        align-items: center;
+      }
+
+      .about-copy,
+      .feature-copy,
+      .nation-copy,
+      .recognition-copy {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        padding: 34px;
+      }
+
+      .about-copy p,
+      .feature-copy p,
+      .nation-copy p,
+      .recognition-copy p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1.02rem;
+      }
+
+      .about-media img,
+      .nation-media img,
+      .feature-media img,
+      .recognition-card img,
+      .testimonial-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .logos-grid {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 16px;
+        align-items: stretch;
+      }
+
+      .logo-box {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        min-height: 104px;
+        padding: 14px;
+        display: grid;
+        place-items: center;
+        box-shadow: var(--shadow);
+      }
+
+      .logo-box img {
+        max-height: 74px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .courses-wrap {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .tabs {
+        background: #0e1b18;
+        color: #fff;
+        border-radius: 24px;
+        padding: 12px;
+        display: grid;
+        gap: 10px;
+        box-shadow: var(--shadow);
+      }
+
+      .tab {
+        padding: 16px 18px;
+        border-radius: 16px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.04);
+        font-weight: 700;
+        text-align: center;
+      }
+
+      .tab.active {
+        background: linear-gradient(135deg, #2f6b5d, #173d35);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .course-panel {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .course-head,
+      .course-row {
+        display: grid;
+        grid-template-columns: 1fr 160px;
+        gap: 18px;
+        padding: 18px 22px;
+      }
+
+      .course-head {
+        background: #1d322d;
+        color: #fff;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        font-size: 0.82rem;
+      }
+
+      .course-row {
+        border-top: 1px solid var(--line);
+        align-items: start;
+      }
+
+      .course-name {
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .course-seat {
+        text-align: right;
+        font-weight: 800;
+        color: var(--green-2);
+      }
+
+      .course-group {
+        padding: 16px 22px 10px;
+        font-weight: 800;
+        color: var(--gold);
+        background: rgba(184, 138, 67, 0.06);
+        border-top: 1px solid var(--line);
+      }
+
+      .engage-grid,
+      .recruiter-grid,
+      .testimonial-grid,
+      .recognition-grid,
+      .links-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .engage-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .engage-card {
+        border-radius: 26px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+
+      .engage-card .media {
+        height: 235px;
+        background: #ddd;
+      }
+
+      .engage-card .media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .engage-card h3 {
+        margin: 0;
+        padding: 18px 18px 20px;
+        text-align: center;
+        font-size: 1.1rem;
+      }
+
+      .placements {
+        background: linear-gradient(
+          135deg,
+          rgba(31, 91, 78, 0.1),
+          rgba(184, 138, 67, 0.1)
+        );
+        border-radius: 32px;
+        padding: 34px;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+      }
+
+      .placements-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .placements-head a {
+        color: var(--green-2);
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .placements-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        align-items: center;
+      }
+
+      .placements-grid img {
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        background: #fff;
+      }
+
+      .recruiter-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+
+      .recruiter-grid .logo-box {
+        min-height: 110px;
+      }
+
+      .feature-section {
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .feature-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .feature-gallery img {
+        height: 220px;
+        object-fit: cover;
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .feature-text {
+        margin-bottom: 18px;
+      }
+
+      .recognition-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+
+      .recognition-card {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .recognition-card img {
+        height: 210px;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .recognition-card .copy {
+        padding: 16px;
+      }
+
+      .recognition-card .copy strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .nation-section {
+        display: grid;
+        grid-template-columns: 1fr 0.95fr;
+        gap: 24px;
+        align-items: center;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      .testimonial-card .copy {
+        padding: 18px;
+      }
+
+      .testimonial-card .name {
+        display: block;
+        font-weight: 800;
+        font-size: 1.03rem;
+        margin-bottom: 4px;
+      }
+
+      .testimonial-card .role {
+        display: block;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 12px;
+        line-height: 1.45;
+      }
+
+      .testimonial-card p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      .footer {
+        background: #111814;
+        color: rgba(255, 255, 255, 0.88);
+        padding: 72px 0 24px;
+        margin-top: 20px;
+      }
+
+      .footer-grid {
+        width: min(1240px, calc(100% - 40px));
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.4fr 0.9fr 1.1fr;
+        gap: 26px;
+      }
+
+      .footer h4 {
+        margin: 0 0 18px;
+        color: #fff;
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px 18px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.55;
+      }
+
+      .footer-links a:hover {
+        color: #fff;
+      }
+
+      .socials {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .socials a {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        font-weight: 800;
+      }
+
+      .footer-note {
+        width: min(1240px, calc(100% - 40px));
+        margin: 40px auto 0;
+        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .floating {
+        position: fixed;
+        right: 22px;
+        bottom: 22px;
+        z-index: 30;
+        display: grid;
+        gap: 10px;
+      }
+
+      .floating a {
+        background: #fff;
+        color: var(--green-2);
+        padding: 12px 16px;
+        border-radius: 999px;
+        font-weight: 800;
+        box-shadow: var(--shadow);
+        border: 1px solid var(--line);
+        text-align: center;
+      }
+
+      @media (max-width: 1200px) {
+        .stats-grid,
+        .recognition-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .logos-grid,
+        .recruiter-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .engage-grid,
+        .testimonials-grid,
+        .footer-grid,
+        .about,
+        .feature-section,
+        .nation-section,
+        .courses-wrap,
+        .placements-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .topbar-inner,
+        .section,
+        .footer-grid,
+        .footer-note {
+          width: min(100%, calc(100% - 24px));
+        }
+
+        .topbar-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .nav {
+          justify-content: flex-start;
+        }
+
+        .stats-grid,
+        .logos-grid,
+        .recruiter-grid,
+        .recognition-grid,
+        .engage-grid,
+        .testimonials-grid,
+        .feature-gallery {
+          grid-template-columns: 1fr;
+        }
+
+        .course-head,
+        .course-row {
+          grid-template-columns: 1fr 92px;
+        }
+
+        .hero-inner {
+          width: min(100%, calc(100% - 24px));
+          padding: 96px 0 120px;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="topbar-inner">
+          <a class="brand" href="#home">
+            <img src="Logo.webp" alt="ABES logo" />
+            <span class="brand-copy">
+              <strong>ABES</strong>
+              <span>Engineering College, Ghaziabad</span>
+            </span>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="#glance">About</a>
+            <a href="#courses">Courses</a>
+            <a href="#clubs">Campus Life</a>
+            <a href="#placements">Placements</a>
+            <a href="#footer">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="home">
+        <section class="hero">
+          <div class="hero-inner">
+            <div class="eyebrow">Welcome to ABES</div>
+            <h1>
+              Recognized among the best engineering colleges in the Delhi NCR,
+              ABES Engineering College blends academic excellence with
+              industry-ready learning.
+            </h1>
+          </div>
+        </section>
+
+        <div class="quote-strip">
+          “We pledge to position India as a Vishwa Guru in AI, leading
+          innovation, ethics, and education, fulfilling our Prime Minister’s
+          vision”. “Autonomous College since 2025”
+        </div>
+
+        <section class="section" id="glance">
+          <div class="section-title">
+            <h2>ABES at a Glance</h2>
+            <div class="rule"></div>
+            <p>
+              For over two decades, ABES has firmly established itself in
+              society as epitome of outcome-focused learning. Its enduring
+              reputation embodies trust and value.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <article class="stat">
+              <div class="value">Est. 2000</div>
+              <div class="label">
+                <strong>Celebrating 26 Years Of Excellence</strong>
+              </div>
+            </article>
+            <article class="stat">
+              <div class="value">8090</div>
+              <div class="label"><strong>Students in Campus</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">24000+</div>
+              <div class="label"><strong>Alumni Worldwide</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">54</div>
+              <div class="label"><strong>Startups Incubated</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">60 LPA</div>
+              <div class="label">
+                <strong>Highest Package in Placements 2025</strong>
+              </div>
+            </article>
+            <article class="stat">
+              <div class="value">1692</div>
+              <div class="label"><strong>Offers in Placement 2025</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">15.77 Acres</div>
+              <div class="label">
+                <strong>Campus With All Modern Facilities</strong>
+              </div>
+            </article>
+            <article class="stat">
+              <div class="value">500+</div>
+              <div class="label"><strong>Recruiters</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">2690+</div>
+              <div class="label"><strong>Scopus Publication</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">375+</div>
+              <div class="label"><strong>Published Patents</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">9</div>
+              <div class="label"><strong>Granted Patents</strong></div>
+            </article>
+            <article class="stat">
+              <div class="value">15 Lacs</div>
+              <div class="label">
+                <strong>Consultancy Received in 2024-25</strong>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>About ABES</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="about">
+            <div class="about-copy">
+              <p>
+                At ABES Engineering College, we ignite the flames of curiosity,
+                knowledge, and innovation. Established over two decades ago
+                under the esteemed Society for Educational Excellence, our
+                institution has evolved into a dynamic center of learning
+                nestled in the heart of Ghaziabad.
+              </p>
+              <p>
+                Beyond engineering, our academic spectrum encompasses a diverse
+                range of programs, including M.Tech, MCA, and MBA courses,
+                designed to cater to the multifaceted aspirations of our
+                students. As we stride forward, our core values of integrity,
+                excellence, and innovation remain at our foundation.
+              </p>
+            </div>
+            <div class="about-media">
+              <img src="About_ABES.webp" alt="ABES Engineering College" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Affiliations, Approvals, Accreditation &amp; Ranking</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="logos-grid">
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="AKTU Logo" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="AICTE Logo" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="ISO Logo" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="NBA accredited colleges" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="NIRF Ranking Logo" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="NAAC Accredited Colleges" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="A Grade Logo" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="courses">
+          <div class="section-title">
+            <h2>Courses Offered</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="courses-wrap">
+            <aside class="tabs" aria-label="Course categories">
+              <div class="tab active">Undergraduate Programmes</div>
+              <div class="tab">Postgraduate Programmes</div>
+            </aside>
+            <div class="course-panel">
+              <div class="course-head">
+                <div>NAME</div>
+                <div class="course-seat">Course Seats</div>
+              </div>
+              <div class="course-group">B.Tech.</div>
+              <div class="course-row">
+                <div class="course-name">
+                  Computer Science &amp; Engineering (NBA Accredited)
+                </div>
+                <div class="course-seat">900</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Computer Science &amp; Engineering (Artificial Intelligence
+                  and Machine Learning)
+                </div>
+                <div class="course-seat">360</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Computer Science &amp; Engineering (Data Science)
+                </div>
+                <div class="course-seat">180</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Electronics &amp; Communication Engineering (NBA Accredited)
+                </div>
+                <div class="course-seat">180</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Electrical and Computer Engineering
+                </div>
+                <div class="course-seat">120</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Mechanical Engineering (NBA Accredited)
+                </div>
+                <div class="course-seat">60</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Computer Science and Engineering (Working Professional)
+                </div>
+                <div class="course-seat">30</div>
+              </div>
+              <div class="course-row">
+                <div class="course-name">
+                  Electronics and Communication Engineering (Working
+                  Professional)
+                </div>
+                <div class="course-seat">30</div>
+              </div>
+              <div class="course-group">Department of Computer Application</div>
+              <div class="course-row">
+                <div class="course-name">BCA</div>
+                <div class="course-seat">120</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="clubs">
+          <div class="section-title">
+            <h2>Explore &amp; Get Engaged</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="engage-grid">
+            <article class="engage-card">
+              <div class="media"><img src="About_ABES.webp" alt="Clubs" /></div>
+              <h3>Clubs (Total 11 clubs)</h3>
+            </article>
+            <article class="engage-card">
+              <div class="media"><img src="About_ABES.webp" alt="TEDx" /></div>
+              <h3>TEDx</h3>
+            </article>
+            <article class="engage-card">
+              <div class="media">
+                <img src="About_ABES.webp" alt="Genero" />
+              </div>
+              <h3>Genero</h3>
+            </article>
+            <article class="engage-card">
+              <div class="media">
+                <img src="About_ABES.webp" alt="TechFest" />
+              </div>
+              <h3>TechFest</h3>
+            </article>
+            <article class="engage-card">
+              <div class="media">
+                <img src="About_ABES.webp" alt="Utsaah" />
+              </div>
+              <h3>Utsaah</h3>
+            </article>
+            <article class="engage-card">
+              <div class="media">
+                <img src="About_ABES.webp" alt="Hostels" />
+              </div>
+              <h3>Hostels</h3>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="placements">
+          <div class="placements">
+            <div class="placements-head">
+              <div
+                class="section-title"
+                style="text-align: left; margin-bottom: 0"
+              >
+                <h2>Placement Achievements</h2>
+                <div class="rule" style="margin-left: 0"></div>
+              </div>
+              <a href="#">Learn more about Placements</a>
+            </div>
+            <div class="placements-grid">
+              <img src="About_ABES.webp" alt="Autodesk package" />
+              <img src="About_ABES.webp" alt="Microsoft Package" />
+              <img src="About_ABES.webp" alt="Cisco Package" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Top Recruiters</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="recruiter-grid">
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="amazon" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="microsoft" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="accenture" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="adobe" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="Capgemini" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="cognizant" />
+            </div>
+            <div class="logo-box"><img src="About_ABES.webp" alt="TCS" /></div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="Infosys" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="DXC.technology" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="Byjus" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="cisco" />
+            </div>
+            <div class="logo-box">
+              <img src="About_ABES.webp" alt="chetu" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="feature-section">
+            <div class="feature-copy">
+              <div
+                class="section-title"
+                style="text-align: left; margin-bottom: 18px"
+              >
+                <h2>Not just confined to classrooms</h2>
+                <div class="rule" style="margin-left: 0"></div>
+              </div>
+              <p class="feature-text">
+                At ABES, education is not confined to classroom walls. We
+                believe in nurturing well-rounded individuals, and thus, our
+                campus is a vibrant hub of activities, encouraging students to
+                explore their interests, engage in research, and actively
+                participate in co-curricular pursuits.
+              </p>
+              <p>
+                Discover the lively campus experience as you navigate ABES's
+                worldclass facilities, conveniently located near the corporate
+                hub of Delhi-NCR.
+              </p>
+              <a
+                href="#"
+                class="eyebrow"
+                style="
+                  color: #fff;
+                  background: var(--green);
+                  border-color: transparent;
+                  margin-top: 10px;
+                  display: inline-block;
+                "
+                >Explore The ABES Campus</a
+              >
+            </div>
+            <div class="feature-gallery">
+              <img src="About_ABES.webp" alt="ABES Club" />
+              <img src="About_ABES.webp" alt="ABES Creativity" />
+              <img src="About_ABES.webp" alt="Abes Club" />
+              <img src="About_ABES.webp" alt="Abes Club" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="nation-section">
+            <div class="nation-copy">
+              <div
+                class="section-title"
+                style="text-align: left; margin-bottom: 18px"
+              >
+                <h2>Serving the Nation</h2>
+                <div class="rule" style="margin-left: 0"></div>
+              </div>
+              <p>
+                Kumudini Tyagi, a 2018 CSE graduate, is a Sub Lieutenant in the
+                Indian Navy. She, along with Sub Lieutenant Riti Singh, is among
+                the FIRST WOMEN OFFICER to earn their wings for operating from
+                Indian Navy warships.
+              </p>
+            </div>
+            <div class="nation-media">
+              <img src="About_ABES.webp" alt="Serving the Nation" />
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>International Recognition</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="recognition-grid">
+            <article class="recognition-card">
+              <img src="About_ABES.webp" alt="Unmanned Aerial Vehicle" />
+              <div class="copy">
+                <strong>Unmanned Aerial Vehicle</strong>
+                <p>
+                  ABES team participated in the world International Aerial
+                  Robotics Competition (IARC) at Georgia, United States.
+                </p>
+              </div>
+            </article>
+            <article class="recognition-card">
+              <img src="About_ABES.webp" alt="Aerial Robotics Competition" />
+              <div class="copy">
+                <strong>Aerial Robotics Competition</strong>
+                <p>
+                  ABESEC team enters the world stage with participation in the
+                  International Aerial Robotics Competition.
+                </p>
+              </div>
+            </article>
+            <article class="recognition-card">
+              <img src="About_ABES.webp" alt="Korea Robot Aircraft" />
+              <div class="copy">
+                <strong>Korea Robot Aircraft</strong>
+                <p>
+                  ABESEC team participated in Korean International Aerial Robot
+                  Aircraft competition and secured 4th position.
+                </p>
+              </div>
+            </article>
+            <article class="recognition-card">
+              <img src="About_ABES.webp" alt="ABU Robocon-Honkong" />
+              <div class="copy">
+                <strong>ABU Robocon-Honkong</strong>
+                <p>
+                  ABES stood first amongst the 4 national and 8 international
+                  teams in US Asian demonstration &amp; assessment technology.
+                </p>
+              </div>
+            </article>
+            <article class="recognition-card">
+              <img src="About_ABES.webp" alt="Korean IARC" />
+              <div class="copy">
+                <strong>Korean IARC</strong>
+                <p>
+                  ABESEC team participated in the Korean International Aerial
+                  Robotics competition at Hansao University in South Korea.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-title">
+            <h2>Testimonials</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="testimonials-grid">
+            <article class="testimonial-card">
+              <img src="About_ABES.webp" alt="Testimonial" />
+              <div class="copy">
+                <span class="name">Shivani Singh</span
+                ><span class="role">Senior Software Engineer, LTIMindtree</span>
+                <p>
+                  Joining ABES EC was the best decision for my career. The
+                  discipline, good pressure, and multitasking skills I developed
+                  there have been crucial in my professional success.
+                </p>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <img src="About_ABES.webp" alt="Testimonial" />
+              <div class="copy">
+                <span class="name">Shivani</span
+                ><span class="role">Senior Engineer</span>
+                <p>
+                  Doing my M-Tech from ABES was a game changer. It opened doors
+                  to the IT field, and after nine years, I am thriving.
+                </p>
+              </div>
+            </article>
+            <article class="testimonial-card">
+              <img src="About_ABES.webp" alt="Testimonial" />
+              <div class="copy">
+                <span class="name">Pranesh Kumar Singh</span
+                ><span class="role"
+                  >Front End Developer, Prologic web solutions</span
+                >
+                <p>
+                  The courses at this institute broadened my understanding
+                  across various subjects. The supportive learning environment
+                  encouraged critical thinking, problem-solving, and effective
+                  communication.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer" id="footer">
+        <div class="footer-grid">
+          <div>
+            <h4>Mandatory Disclosures</h4>
+            <div class="footer-links">
+              <a href="#">Mandatory Disclosure</a>
+              <a href="#">AICTE Approval</a>
+              <a href="#">University Affiliation Letter</a>
+              <a href="#">Education Verification</a>
+              <a href="#">Audited Statement</a>
+              <a href="#">Student's Request Form (SIS)</a>
+              <a href="#">Academic Calendar</a>
+              <a href="#">Barrier Free Environment Certificate</a>
+              <a href="#">Hostel Rule Booklet</a>
+              <a href="#">Refund Policy</a>
+              <a href="#">College Policy</a>
+              <a href="#">Grievance Redressal Portal</a>
+            </div>
+          </div>
+          <div>
+            <h4>Address</h4>
+            <p>19th KM Stone<br />NH-09 Ghaziabad (UP)<br />PIN - 201009</p>
+            <p>
+              <a href="tel:01207135112">Phone no. 01207135112</a><br /><a
+                href="mailto:info@abes.ac.in"
+                >info@abes.ac.in</a
+              >
+            </p>
+            <div class="socials">
+              <a href="#">f</a>
+              <a href="#">i</a>
+              <a href="#">x</a>
+              <a href="#">in</a>
+              <a href="#">yt</a>
+            </div>
+          </div>
+          <div>
+            <h4>Important Links</h4>
+            <div class="footer-links">
+              <a href="#">Turnitin</a>
+              <a href="#">No-Dues Portal</a>
+              <a href="#">Disclaimer</a>
+              <a href="#">UAV</a>
+              <a href="#">RTI</a>
+              <a href="#">Academic Results</a>
+              <a href="#">Admissions</a>
+              <a href="#">Career</a>
+              <a href="#">CETL (SIS)</a>
+              <a href="#">Virtual Tour</a>
+              <a href="#">I &amp; E Policies</a>
+              <a href="#">Library</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-note">
+          All Rights Reserved. ABES Engineering College
+        </div>
+      </footer>
+
+      <div class="floating">
+        <a href="#home">Apply Now</a>
+        <a href="tel:8448494111">Toll Free - 8448494111</a>
+      </div>
+    </div>
+  </body>
+</html>
