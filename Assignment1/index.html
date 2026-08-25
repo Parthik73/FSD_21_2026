@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Shop</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="box">
+      <h1>Online Shop</h1>
+      Tea: 100<br />
+      Coffee: 500<br />
+      Aata: 600<br />
+      Chini: 800<br />
+      <button onclick="buy()">Buy Now</button>
+    </div>
+    <div id="total"></div>
+    <script>
+      const products = {
+        tea: 100,
+        coffee: 500,
+        aata: 600,
+        chini: 800,
+      };
+      function buy() {
+        let a = prompt("Enter product name:");
+        let q = Number(prompt("Enter quantity:"));
+        let price = products[a];
+        if (price) {
+          let totalAmount = price * q;
+          document.getElementById("total").innerHTML =
+            "Item: " +
+            a +
+            "<br>Quantity: " +
+            q +
+            "<br>Your total amount is: " +
+            totalAmount;
+        } else {
+          document.getElementById("total").innerHTML = "Invalid product name";
+        }
+      }
+    </script>
+  </body>
+</html>
