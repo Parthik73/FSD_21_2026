@@ -1,0 +1,14 @@
+.bus-image {
+  height: 50px;
+  width: 100px;
+}
+.container {
+  display: flex;
+  border: 1px solid black;
+  height: 100vh;
+}
+
+#logo-container {
+  display: flex;
+  border: 1px solid black;
+}
