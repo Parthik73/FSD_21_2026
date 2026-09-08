@@ -6,6 +6,7 @@
   display: flex;
   border: 1px solid black;
   height: 100vh;
+  background-color: #a3a3a3;
 }
 
 #logo-container {
